@@ -18,56 +18,38 @@ contract Organization {
     string orgEmail;
     PhoneNumber orgPhoneNumber;
     Address orgAddress;
-    address metaMaskAddr;
 
     Doctor[] private doctorList;
 
     constructor(
-        string memory name,
-        string memory email,
-        uint256 areaCode,
-        uint256 phoneNumber,
-        string memory streetAddress,
-        string memory city,
-        string memory state,
-        string memory postalCode,
-        string memory country
+        string memory hospName,
+        string memory hospEmail,
+        PhoneNumber memory hospPhoneNumber,
+        Address memory hospAddress
     ) {
-        orgName = name;
-        orgEmail = email;
-        orgPhoneNumber = PhoneNumber(areaCode, phoneNumber);
-        orgAddress = Address(streetAddress, city, state, postalCode, country);
+        orgName = hospName;
+        orgEmail = hospEmail;
+        orgPhoneNumber = hospPhoneNumber;
+        orgAddress = hospAddress;
     }
 
     function addDoctor(
-        string memory firstName,
-        string memory lastName,
+        Doctor.Name memory doctorName,
         string memory doctorTitle,
-        uint256 gender,
-        string memory email,
-        uint256 age,
-        uint256 areaCode,
-        uint256 phoneNumber,
-        string memory streetAddress,
-        string memory city,
-        string memory state,
-        string memory postalCode,
-        string memory country
+        uint256 doctorGender,
+        string memory doctorEmail,
+        uint256 doctorAge,
+        Doctor.PhoneNumber memory doctorPhoneNumber,
+        Doctor.Address memory doctorAddress
     ) public {
         Doctor d = new Doctor(
-            firstName,
-            lastName,
+            doctorName,
             doctorTitle,
-            gender,
-            email,
-            age,
-            areaCode,
-            phoneNumber,
-            streetAddress,
-            city,
-            state,
-            postalCode,
-            country
+            doctorGender,
+            doctorEmail,
+            doctorAge,
+            doctorPhoneNumber,
+            doctorAddress
         );
         doctorList.push(d);
     }

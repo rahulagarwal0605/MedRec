@@ -30,25 +30,19 @@ contract User {
     Address userAddress;
 
     constructor(
-        string memory firstName,
-        string memory lastName,
-        uint256 gender,
-        string memory email,
-        uint256 age,
-        uint256 areaCode,
-        uint256 phoneNumber,
-        string memory streetAddress,
-        string memory city,
-        string memory state,
-        string memory postalCode,
-        string memory country
+        Name memory username,
+        uint256 usergender,
+        string memory useremail,
+        uint256 userage,
+        PhoneNumber memory userphoneNumber,
+        Address memory useraddress
     ) {
-        userName = Name(firstName, lastName);
-        if (gender == 0) userGender = Gender.Male;
+        userName = username;
+        if (usergender == 0) userGender = Gender.Male;
         else userGender = Gender.Female;
-        userEmail = email;
-        userAge = age;
-        userPhoneNumber = PhoneNumber(areaCode, phoneNumber);
-        userAddress = Address(streetAddress, city, state, postalCode, country);
+        userEmail = useremail;
+        userAge = userage;
+        userPhoneNumber = userphoneNumber;
+        userAddress = useraddress;
     }
 }

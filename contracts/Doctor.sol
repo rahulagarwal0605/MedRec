@@ -8,65 +8,41 @@ contract Doctor is User {
     Patient[] private patientList;
 
     constructor(
-        string memory firstName,
-        string memory lastName,
+        Name memory doctorName,
         string memory doctorTitle,
-        uint256 gender,
-        string memory email,
-        uint256 age,
-        uint256 areaCode,
-        uint256 phoneNumber,
-        string memory streetAddress,
-        string memory city,
-        string memory state,
-        string memory postalCode,
-        string memory country
+        uint256 doctorGender,
+        string memory doctorEmail,
+        uint256 doctorAge,
+        PhoneNumber memory doctorPhoneNumber,
+        Address memory doctorAddress
     )
         User(
-            firstName,
-            lastName,
-            gender,
-            email,
-            age,
-            areaCode,
-            phoneNumber,
-            streetAddress,
-            city,
-            state,
-            postalCode,
-            country
+            doctorName,
+            doctorGender,
+            doctorEmail,
+            doctorAge,
+            doctorPhoneNumber,
+            doctorAddress
         )
     {
         title = doctorTitle;
     }
 
     function addPatient(
-        string memory firstName,
-        string memory lastName,
-        uint256 gender,
-        string memory email,
-        uint256 age,
-        uint256 areaCode,
-        uint256 phoneNumber,
-        string memory streetAddress,
-        string memory city,
-        string memory state,
-        string memory postalCode,
-        string memory country
+        Name memory patientName,
+        uint256 patientGender,
+        string memory patientEmail,
+        uint256 patientAge,
+        PhoneNumber memory patientPhoneNumber,
+        Address memory patientAddress
     ) public {
         Patient p = new Patient(
-            firstName,
-            lastName,
-            gender,
-            email,
-            age,
-            areaCode,
-            phoneNumber,
-            streetAddress,
-            city,
-            state,
-            postalCode,
-            country
+            patientName,
+            patientGender,
+            patientEmail,
+            patientAge,
+            patientPhoneNumber,
+            patientAddress
         );
         patientList.push(p);
     }

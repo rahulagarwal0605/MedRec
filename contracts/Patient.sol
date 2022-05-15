@@ -15,53 +15,25 @@ contract Patient is User {
     MedicalRecord[] private patientMedRec;
 
     constructor(
-        string memory firstName,
-        string memory lastName,
-        uint256 gender,
-        string memory email,
-        uint256 age,
-        uint256 areaCode,
-        uint256 phoneNumber,
-        string memory streetAddress,
-        string memory city,
-        string memory state,
-        string memory postalCode,
-        string memory country
+        Name memory patientName,
+        uint256 patientGender,
+        string memory patientEmail,
+        uint256 patientAge,
+        PhoneNumber memory patientPhoneNumber,
+        Address memory patientAddress
     )
         User(
-            firstName,
-            lastName,
-            gender,
-            email,
-            age,
-            areaCode,
-            phoneNumber,
-            streetAddress,
-            city,
-            state,
-            postalCode,
-            country
+            patientName,
+            patientGender,
+            patientEmail,
+            patientAge,
+            patientPhoneNumber,
+            patientAddress
         )
     {}
 
-    function addMedRec(
-        string memory startDate,
-        string memory endDate,
-        uint256 daysExcused,
-        string memory diagnosis,
-        string memory diagnosisDescription,
-        string memory prescription
-    ) public {
-        patientMedRec.push(
-            MedicalRecord(
-                startDate,
-                endDate,
-                daysExcused,
-                diagnosis,
-                diagnosisDescription,
-                prescription
-            )
-        );
+    function addMedRec(MedicalRecord memory medRec) public {
+        patientMedRec.push(medRec);
     }
 
     function removeMedRec(uint256 index) public {

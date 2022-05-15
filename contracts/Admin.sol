@@ -16,26 +16,16 @@ contract Admin {
     }
 
     function addHospital(
-        string memory name,
-        string memory email,
-        uint256 areaCode,
-        uint256 phoneNumber,
-        string memory streetAddress,
-        string memory city,
-        string memory state,
-        string memory postalCode,
-        string memory country
+        string memory hospName,
+        string memory hospEmail,
+        Organization.PhoneNumber memory hospPhoneNumber,
+        Organization.Address memory hospAddress
     ) public onlyAdmin {
         Organization h = new Organization(
-            name,
-            email,
-            areaCode,
-            phoneNumber,
-            streetAddress,
-            city,
-            state,
-            postalCode,
-            country
+            hospName,
+            hospEmail,
+            hospPhoneNumber,
+            hospAddress
         );
         hospitalList.push(h);
     }
