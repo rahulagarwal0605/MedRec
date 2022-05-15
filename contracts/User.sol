@@ -18,7 +18,7 @@ contract User {
         string streetAddress;
         string city;
         string state;
-        string postalCode;
+        uint256 postalCode;
         string country;
     }
 

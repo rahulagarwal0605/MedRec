@@ -5,7 +5,7 @@ import "./Patient.sol";
 
 contract Doctor is User {
     string private title;
-    Patient[] private patientList;
+    mapping(address => Patient) private patientList;
 
     constructor(
         Name memory doctorName,
@@ -34,7 +34,8 @@ contract Doctor is User {
         string memory patientEmail,
         uint256 patientAge,
         PhoneNumber memory patientPhoneNumber,
-        Address memory patientAddress
+        Address memory patientAddress,
+        address privAddress
     ) public {
         Patient p = new Patient(
             patientName,
@@ -44,17 +45,14 @@ contract Doctor is User {
             patientPhoneNumber,
             patientAddress
         );
-        patientList.push(p);
+        patientList[privAddress] = p;
     }
 
-    function removePatient(uint256 index) public {
-        for (uint256 i = index; i < patientList.length - 1; i++) {
-            patientList[i] = patientList[i + 1];
-        }
-        patientList.pop();
+    function removePatient(address privAddress) public {
+        delete patientList[privAddress];
     }
 
-    function viewMedRec(uint256 index)
+    function viewMedRec(address privAddress)
         public
         view
         returns (
@@ -66,6 +64,6 @@ contract Doctor is User {
             string[] memory
         )
     {
-        return patientList[index].viewMedRec();
+        return patientList[privAddress].viewMedRec();
     }
 }

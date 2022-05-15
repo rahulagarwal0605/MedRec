@@ -3,23 +3,24 @@ pragma solidity ^0.8.13;
 import "./Organization.sol";
 
 contract Admin {
-    Organization[] private hospitalList;
-    address private owner;
-
-    constructor() {
-        owner = tx.origin;
-    }
+    mapping(address => Organization) private hospitalList;
+    address private adminAddress;
 
     modifier onlyAdmin() {
-        require(owner == msg.sender, "User is not an admin");
+        require(adminAddress == msg.sender, "User is not an admin");
         _;
+    }
+
+    constructor() {
+        adminAddress = tx.origin;
     }
 
     function addHospital(
         string memory hospName,
         string memory hospEmail,
         Organization.PhoneNumber memory hospPhoneNumber,
-        Organization.Address memory hospAddress
+        Organization.Address memory hospAddress,
+        address privAddress
     ) public onlyAdmin {
         Organization h = new Organization(
             hospName,
@@ -27,6 +28,10 @@ contract Admin {
             hospPhoneNumber,
             hospAddress
         );
-        hospitalList.push(h);
+        hospitalList[privAddress] = h;
+    }
+
+    function removeHospital(address privAddress) public {
+        delete hospitalList[privAddress];
     }
 }

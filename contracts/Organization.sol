@@ -11,15 +11,14 @@ contract Organization {
         string streetAddress;
         string city;
         string state;
-        string postalCode;
+        uint256 postalCode;
         string country;
     }
     string orgName;
     string orgEmail;
     PhoneNumber orgPhoneNumber;
     Address orgAddress;
-
-    Doctor[] private doctorList;
+    mapping(address => Doctor) private doctorList;
 
     constructor(
         string memory hospName,
@@ -40,7 +39,8 @@ contract Organization {
         string memory doctorEmail,
         uint256 doctorAge,
         Doctor.PhoneNumber memory doctorPhoneNumber,
-        Doctor.Address memory doctorAddress
+        Doctor.Address memory doctorAddress,
+        address privAddress
     ) public {
         Doctor d = new Doctor(
             doctorName,
@@ -51,13 +51,10 @@ contract Organization {
             doctorPhoneNumber,
             doctorAddress
         );
-        doctorList.push(d);
+        doctorList[privAddress] = d;
     }
 
-    function removeDoctor(uint256 index) public {
-        for (uint256 i = index; i < doctorList.length - 1; i++) {
-            doctorList[i] = doctorList[i + 1];
-        }
-        doctorList.pop();
+    function removeDoctor(address privAddress) public {
+        delete doctorList[privAddress];
     }
 }
