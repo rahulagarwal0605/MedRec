@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.6.8, mobirise.com">
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="">
+  <meta property="og:image" content="">
+  <meta name="twitter:title" content="Doctors">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/lnmemr-justlogo-121x121.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Doctors</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  <style type="text/css">
+    body {
+    color: #404E67;
+    background: #F5F7FA;
+    font-family: 'Open Sans', sans-serif;
+    }
+    .table-wrapper {
+    width: 85%;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+    }
+    .table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+    }
+    .table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+    }
+    .table-title .add-new i {
+    margin-right: 4px;
+    }
+    table.table {
+    table-layout: fixed;
+    }
+    table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+    }
+    table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+    }
+    table.table th:last-child {
+    width: 100px;
+    }
+    table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+    }
+    table.table td a.add {
+    color: #27C46B;
+    }
+    table.table td a.edit {
+    color: #FFC107;
+    }
+    table.table td a.delete {
+    color: #E34724;
+    }
+    table.table td i {
+    font-size: 19px;
+    }
+    table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+    }
+    table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+    }
+    table.table .form-control.error {
+    border-color: #f50000;
+    }
+    table.table td .add {
+    display: none;
+    }
+    </style>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    var actions = $("table td:last-child").html();
+    // Append table with add row form on add new button click
+    $(".add-new").click(function(){
+    $(this).attr("disabled", "disabled");
+    var index = $("table tbody tr:last-child").index();
+    var row = '<tr>' +
+    '<td><input type="text" class="form-control" name="name" id="name"></td>' +
+    '<td><input type="text" class="form-control" name="department" id="department"></td>' +
+    '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+    '<td>' + actions + '</td>' +
+    '</tr>';
+    $("table").append(row);
+    $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+    $('[data-toggle="tooltip"]').tooltip();
+    });
+    // Add row on add button click
+    $(document).on("click", ".add", function(){
+    var empty = false;
+    var input = $(this).parents("tr").find('input[type="text"]');
+    input.each(function(){
+    if(!$(this).val()){
+    $(this).addClass("error");
+    empty = true;
+    } else{
+    $(this).removeClass("error");
+    }
+    });
+    $(this).parents("tr").find(".error").first().focus();
+    if(!empty){
+    input.each(function(){
+    $(this).parent("td").html($(this).val());
+    });
+    $(this).parents("tr").find(".add, .edit").toggle();
+    $(".add-new").removeAttr("disabled");
+    }
+    });
+    // Edit row on edit button click
+    $(document).on("click", ".edit", function(){
+    $(this).parents("tr").find("td:not(:last-child)").each(function(){
+    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+    });
+    $(this).parents("tr").find(".add, .edit").toggle();
+    $(".add-new").attr("disabled", "disabled");
+    });
+    // Delete row on delete button click
+    $(document).on("click", ".delete", function(){
+    $(this).parents("tr").remove();
+    $(".add-new").removeAttr("disabled");
+    });
+    });
+    </script>
+  
+  
+</head>
+<body>
+  
+    <section data-bs-version="5.1" class="menu cid-t5StqKLuSi" once="menu" id="menu1-1i">
+    
+        <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+            <div class="container">
+                <div class="navbar-brand">
+                    
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="index.html">LNM EMR MANAGER</a></span>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="doctor.html#form5-1y">Add New Patient</a></li></ul>
+                    
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="doctor.html#content4-20">View Record</a></li></ul>
+                    
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="doctor.html#form5-1x">Add Record</a></li></ul>
+                    
+                    <div class="navbar-buttons mbr-section-btn"><a class="btn btn-secondary display-4" href="">Logout</a></div>
+                </div>
+            </div>
+        </nav>
+
+    </section>
+
+
+<section data-bs-version="5.1" class="content4 cid-t5SFO3fQNO" id="content4-1z">
+    
+
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>View Patients</strong></h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="table-wrapper">
+        <div class="table-title">
+        <div class="row">
+        <div class="col-sm-8">
+        
+        </div>
+        </div>
+        </div>
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+
+        <th>Patient Name</th>
+        <th>Patient Gender</th>
+        <th>Patient Email</th>
+        <th>Patient Age</th>
+        <th>Patient Contact No.</th>
+        <th>Patient Address</th>
+
+
+        </tr>
+        </thead>
+        
+        <tbody>
+        <tr>
+
+
+        <td>ManishJi</td>
+        <td>Male</td>
+        <td>manp@gmail.com</td>
+        <td>55</td>
+        <td>57575757</td>
+        <td>Kahi bhi dolte rehte hai</td>
+       
+       
+        <td>
+        
+        <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
+        </td>
+        </tr>
+        <tr>
+
+            <td>ManishJi 2.0</td>
+            <td>Male</td>
+            <td>manp@gmail.com</td>
+            <td>55</td>
+            <td>57575757</td>
+            <td>Kahi bhi dolte rehte hai</td>
+
+            <td>
+            
+            <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+<section data-bs-version="5.1" class="form5 cid-t5SFzClWIE" id="form5-1y">
+    
+    
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Add New Patient</strong></h3>
+            
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="xtM26wAAYpJ4Ff+NzTaRJpYe6SLXC4ShDqFoMAwddYjWsiMPdTSVRasLzc8QfL4TyWbRpU5ewdu4wD4S0lFfa/qMWof1cZItferwaZmB45x2TahYjTrhCwEEjB+EDg8V">
+                    <div class="row">
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Added Successfully!</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                            Oops...! some problem!
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="patientName">
+                        <input type="text" name="patientName" placeholder="Patient Name" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="patientGender">
+                        <input type="text" name="patientGender" placeholder="Patient Gender" data-form-field="email" class="form-control" value="" id="email-form5-1f">
+                    </div>
+
+
+                    <div class="col-md1 col-sm-12 form-group mb-3" data-for="patientEmail">
+                        <input type="email" name="patientEmail" placeholder="Patient Email" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
+                    <div class="col-md1 col-sm-12 form-group mb-3" data-for="patientAge">
+                        <input type="text" name="patientAge" placeholder="Patient Age" data-form-field="email" class="form-control" value="" id="email-form5-1f">
+                    </div>
+
+
+                    <div class="col-12 form-group mb-3" data-for="patientPhoneNumber">
+                        <input type="tel" name="patientPhoneNumber" placeholder="Patient Contact No." data-form-field="url" class="form-control" value="" id="url-form5-1f">
+                    </div>
+
+                    <div class="col-12 form-group mb-3" data-for="patientAddress">
+                        <textarea name="patientAddress" placeholder="Patient Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+                    </div>
+
+
+
+
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-4">Add Patient</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-t5SFOGvqcz" id="content4-20">
+    
+
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Past Medical Records</strong></h3>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="table-wrapper">
+        <div class="table-title">
+        <div class="row">
+        <div class="col-sm-6">
+        
+        </div>
+        </div>
+        </div>
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Days Excused</th>
+        <th>Diagnosis</th>
+        <th>Diagnosis Description</th>
+        <th>Prescription</th>
+        </tr>
+        </thead>
+        
+        <tbody>
+        <tr>
+        <td>11/05/2022</td>
+        <td>14/05/2022</td>
+        <td>4</td>
+        <td>Fever</td>
+        <td>2 Din Se</td>
+        <td>Paracetamol</td>
+        <td>
+        
+        <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
+        </td>
+        </tr>
+        <tr>
+            <td>11/05/2022</td>
+            <td>14/05/2022</td>
+            <td>4</td>
+            <td>Fever</td>
+            <td>2 Din Se</td>
+            <td>Paracetamol</td>
+            <td>
+            
+            <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+
+
+
+
+
+</section>
+
+<section data-bs-version="5.1" class="form5 cid-t5SFvmftwX" id="form5-1x">
+    
+    
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Add Medical Record</strong></h3>
+            
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="WLOlWKuy1JJJEOPpbwcNzbFmZYwMuEdZzm1i0JJHIl5tfvcs+YYMhLYSZ+czt4SnMyfsNpZi8l/nBSWyUpinEc0hUvxvDmwyFuMF2I8F92u5F3ioPAD65EgaXeNaXJuL">
+                    <div class="row">
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Added Successfully!</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                            Oops...! some problem!
+                        </div>
+                    </div>
+
+
+                    <div class="dragArea row">
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="SDate">
+                            <input type="text" name="SDate" placeholder="Start Date" data-form-field="name" class="form-control" value="" id="name-form5-1j">
+                        </div>
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="EDate">
+                            <input type="text" name="EDate" placeholder="End Date" data-form-field="name" class="form-control" value="" id="email-form5-1j">
+                        </div>
+
+                        <div class="col-md1 col-sm-12 form-group mb-3" data-for="DaysExcused">
+                            <input type="text" name="DaysExcused" placeholder="Days Excused" data-form-field="name" class="form-control" value="" id="name-form5-1j">
+                        </div>
+
+                        <div class="col-md1 col-sm-12 form-group mb-3" data-for="Diagnosis">
+                            <input type="text" name="Diagnosis" placeholder="Diagnosis" data-form-field="name" class="form-control" value="" id="email-form5-1j">
+                        </div>
+
+
+                        <div class="col-12 form-group mb-3" data-for="DiagnosisDescription">
+                            <textarea name="textarea" placeholder="Diagnosis Description" data-form-field="textarea" class="form-control" id="textarea-form5-1j"></textarea>
+                        </div>
+
+                        <div class="col-12 form-group mb-3" data-for="Prescription">
+                            <textarea name="textarea" placeholder="Prescription" data-form-field="textarea" class="form-control" id="textarea-form5-1j"></textarea>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-4">Add Record</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section data-bs-version="5.1" class="footer3 cid-t5SFm134wq" once="footers" id="footer3-1w">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                    
+                    
+                    
+                    
+                    
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="index.html#top" class="text-success text-primary">Home</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="login.html" class="text-success">Log In</a></li></ul>
+            </div>
+            
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2022 LNM EMR MANAGER<br>Made with 💙 by Vaibhav &amp; Rahul<br><br>
+                </p>
+            </div>
+        </div>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script type="text/javascript" src="assets/js/login.js"></script>
+  
+</body>
+</html>

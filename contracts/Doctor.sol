@@ -66,4 +66,8 @@ contract Doctor is User {
     {
         return patientList[privAddress].viewMedRec();
     }
+
+    function getPatient(address privAddress) public view returns (Patient) {
+        return patientList[privAddress];
+    }
 }

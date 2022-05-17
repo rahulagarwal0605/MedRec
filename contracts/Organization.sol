@@ -57,4 +57,8 @@ contract Organization {
     function removeDoctor(address privAddress) public {
         delete doctorList[privAddress];
     }
+
+    function getDoctor(address privAddress) public view returns (Doctor) {
+        return doctorList[privAddress];
+    }
 }

@@ -3,16 +3,16 @@ pragma solidity ^0.8.13;
 import "./Organization.sol";
 
 contract Admin {
-    mapping(address => Organization) private hospitalList;
     address private adminAddress;
-
-    modifier onlyAdmin() {
-        require(adminAddress == msg.sender, "User is not an admin");
-        _;
-    }
+    mapping(address => Organization) private hospitalList;
+    Organization[] private hospitallist;
 
     constructor() {
         adminAddress = tx.origin;
+    }
+
+    function getAdminAddress() public view returns (address) {
+        return adminAddress;
     }
 
     function addHospital(
@@ -21,7 +21,7 @@ contract Admin {
         Organization.PhoneNumber memory hospPhoneNumber,
         Organization.Address memory hospAddress,
         address privAddress
-    ) public onlyAdmin {
+    ) public {
         Organization h = new Organization(
             hospName,
             hospEmail,
@@ -33,5 +33,17 @@ contract Admin {
 
     function removeHospital(address privAddress) public {
         delete hospitalList[privAddress];
+    }
+
+    function getHospital(address privAddress)
+        public
+        view
+        returns (Organization)
+    {
+        return hospitalList[privAddress];
+    }
+
+    function getHospitalList() public view returns (Organization[] memory) {
+        return hospitallist;
     }
 }
