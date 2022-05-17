@@ -3,33 +3,25 @@ pragma solidity ^0.8.13;
 import "./Doctor.sol";
 
 contract Organization {
-    struct PhoneNumber {
-        uint256 areaCode;
-        uint256 phoneNumber;
-    }
-    struct Address {
-        string streetAddress;
-        string city;
-        string state;
-        uint256 postalCode;
-        string country;
-    }
-    string orgName;
-    string orgEmail;
-    PhoneNumber orgPhoneNumber;
-    Address orgAddress;
+    string public orgName;
+    string public orgEmail;
+    string public orgPhoneNumber;
+    string public orgAddress;
+    address public orgPrivAddress;
     mapping(address => Doctor) private doctorList;
 
     constructor(
         string memory hospName,
         string memory hospEmail,
-        PhoneNumber memory hospPhoneNumber,
-        Address memory hospAddress
+        string memory hospPhoneNumber,
+        string memory hospAddress,
+        address hospPrivAddress
     ) {
         orgName = hospName;
         orgEmail = hospEmail;
         orgPhoneNumber = hospPhoneNumber;
         orgAddress = hospAddress;
+        orgPrivAddress = hospPrivAddress;
     }
 
     function addDoctor(

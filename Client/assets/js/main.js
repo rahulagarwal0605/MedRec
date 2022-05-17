@@ -1,5 +1,5 @@
 var web3 = new Web3(window.ethereum);
-var contractAddress = "0xc4BD609F0159F7a0e1Ad7dc45B52F4E70c199cc2";
+var contractAddress = "0xD48368142FADe4739D27801Dc382d13ca38Fe62C";
 var abi = [
   {
     inputs: [],
@@ -118,53 +118,14 @@ var abi = [
         type: "string",
       },
       {
-        components: [
-          {
-            internalType: "uint256",
-            name: "areaCode",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "phoneNumber",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct Organization.PhoneNumber",
+        internalType: "string",
         name: "hospPhoneNumber",
-        type: "tuple",
+        type: "string",
       },
       {
-        components: [
-          {
-            internalType: "string",
-            name: "streetAddress",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "city",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "state",
-            type: "string",
-          },
-          {
-            internalType: "uint256",
-            name: "postalCode",
-            type: "uint256",
-          },
-          {
-            internalType: "string",
-            name: "country",
-            type: "string",
-          },
-        ],
-        internalType: "struct Organization.Address",
+        internalType: "string",
         name: "hospAddress",
-        type: "tuple",
+        type: "string",
       },
       {
         internalType: "address",
@@ -321,7 +282,27 @@ var abi = [
     name: "getHospitalList",
     outputs: [
       {
-        internalType: "contract Organization[]",
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "address[]",
         name: "",
         type: "address[]",
       },
@@ -523,6 +504,7 @@ async function getHospitalList() {
     .getHospitalList()
     .call({ from: account })
     .then(function (list) {
+      l = list;
       console.log(list);
     });
 }

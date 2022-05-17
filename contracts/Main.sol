@@ -47,8 +47,8 @@ contract Main {
     function addHospital(
         string memory hospName,
         string memory hospEmail,
-        Organization.PhoneNumber memory hospPhoneNumber,
-        Organization.Address memory hospAddress,
+        string memory hospPhoneNumber,
+        string memory hospAddress,
         address privAddress
     ) public onlyAdmin(msg.sender) {
         a.addHospital(
@@ -70,7 +70,13 @@ contract Main {
         public
         view
         onlyAdmin(msg.sender)
-        returns (Organization[] memory)
+        returns (
+            string[] memory,
+            string[] memory,
+            string[] memory,
+            string[] memory,
+            address[] memory
+        )
     {
         return a.getHospitalList();
     }
