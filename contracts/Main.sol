@@ -82,13 +82,13 @@ contract Main {
     }
 
     function addDoctor(
-        Doctor.Name memory doctorName,
+        string memory doctorName,
         string memory doctorTitle,
-        uint256 doctorGender,
+        string memory doctorGender,
         string memory doctorEmail,
         uint256 doctorAge,
-        Doctor.PhoneNumber memory doctorPhoneNumber,
-        Doctor.Address memory doctorAddress,
+        string memory doctorPhoneNumber,
+        string memory doctorAddress,
         address privAddress
     ) public onlyOrg(msg.sender) {
         a.getHospital(msg.sender).addDoctor(
@@ -111,13 +111,31 @@ contract Main {
         docOrg[privAddress] = address(0);
     }
 
+    function getDoctorList()
+        public
+        view
+        onlyOrg(msg.sender)
+        returns (
+            string[] memory,
+            string[] memory,
+            string[] memory,
+            string[] memory,
+            uint256[] memory,
+            string[] memory,
+            string[] memory,
+            address[] memory
+        )
+    {
+        return a.getHospital(msg.sender).getDoctorList();
+    }
+
     function addPatient(
-        Patient.Name memory patientName,
-        uint256 patientGender,
+        string memory patientName,
+        string memory patientGender,
         string memory patientEmail,
         uint256 patientAge,
-        Patient.PhoneNumber memory patientPhoneNumber,
-        Patient.Address memory patientAddress,
+        string memory patientPhoneNumber,
+        string memory patientAddress,
         address privAddress
     ) public onlyDoc(msg.sender) {
         a.getHospital(docOrg[msg.sender]).getDoctor(msg.sender).addPatient(

@@ -1,29 +1,12 @@
 var web3 = new Web3(window.ethereum);
-var contractAddress = "0xD48368142FADe4739D27801Dc382d13ca38Fe62C";
+var contractAddress = "0xd2066cA1518F8c9Da3D841994cFf046D717386F9";
 var abi = [
-  {
-    inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
   {
     inputs: [
       {
-        components: [
-          {
-            internalType: "string",
-            name: "firstName",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "lastName",
-            type: "string",
-          },
-        ],
-        internalType: "struct User.Name",
+        internalType: "string",
         name: "doctorName",
-        type: "tuple",
+        type: "string",
       },
       {
         internalType: "string",
@@ -31,9 +14,9 @@ var abi = [
         type: "string",
       },
       {
-        internalType: "uint256",
+        internalType: "string",
         name: "doctorGender",
-        type: "uint256",
+        type: "string",
       },
       {
         internalType: "string",
@@ -46,53 +29,14 @@ var abi = [
         type: "uint256",
       },
       {
-        components: [
-          {
-            internalType: "uint256",
-            name: "areaCode",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "phoneNumber",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct User.PhoneNumber",
+        internalType: "string",
         name: "doctorPhoneNumber",
-        type: "tuple",
+        type: "string",
       },
       {
-        components: [
-          {
-            internalType: "string",
-            name: "streetAddress",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "city",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "state",
-            type: "string",
-          },
-          {
-            internalType: "uint256",
-            name: "postalCode",
-            type: "uint256",
-          },
-          {
-            internalType: "string",
-            name: "country",
-            type: "string",
-          },
-        ],
-        internalType: "struct User.Address",
+        internalType: "string",
         name: "doctorAddress",
-        type: "tuple",
+        type: "string",
       },
       {
         internalType: "address",
@@ -186,26 +130,14 @@ var abi = [
   {
     inputs: [
       {
-        components: [
-          {
-            internalType: "string",
-            name: "firstName",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "lastName",
-            type: "string",
-          },
-        ],
-        internalType: "struct User.Name",
+        internalType: "string",
         name: "patientName",
-        type: "tuple",
+        type: "string",
       },
       {
-        internalType: "uint256",
+        internalType: "string",
         name: "patientGender",
-        type: "uint256",
+        type: "string",
       },
       {
         internalType: "string",
@@ -218,53 +150,14 @@ var abi = [
         type: "uint256",
       },
       {
-        components: [
-          {
-            internalType: "uint256",
-            name: "areaCode",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "phoneNumber",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct User.PhoneNumber",
+        internalType: "string",
         name: "patientPhoneNumber",
-        type: "tuple",
+        type: "string",
       },
       {
-        components: [
-          {
-            internalType: "string",
-            name: "streetAddress",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "city",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "state",
-            type: "string",
-          },
-          {
-            internalType: "uint256",
-            name: "postalCode",
-            type: "uint256",
-          },
-          {
-            internalType: "string",
-            name: "country",
-            type: "string",
-          },
-        ],
-        internalType: "struct User.Address",
+        internalType: "string",
         name: "patientAddress",
-        type: "tuple",
+        type: "string",
       },
       {
         internalType: "address",
@@ -275,58 +168,6 @@ var abi = [
     name: "addPatient",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getHospitalList",
-    outputs: [
-      {
-        internalType: "string[]",
-        name: "",
-        type: "string[]",
-      },
-      {
-        internalType: "string[]",
-        name: "",
-        type: "string[]",
-      },
-      {
-        internalType: "string[]",
-        name: "",
-        type: "string[]",
-      },
-      {
-        internalType: "string[]",
-        name: "",
-        type: "string[]",
-      },
-      {
-        internalType: "address[]",
-        name: "",
-        type: "address[]",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "privAddress",
-        type: "address",
-      },
-    ],
-    name: "getRole",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -379,6 +220,111 @@ var abi = [
     name: "removePatient",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [],
+    name: "getDoctorList",
+    outputs: [
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getHospitalList",
+    outputs: [
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "privAddress",
+        type: "address",
+      },
+    ],
+    name: "getRole",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -499,34 +445,70 @@ async function login() {
     .catch((err) => alert(err));
 }
 
+var address;
 async function getHospitalList() {
   await contract.methods
     .getHospitalList()
     .call({ from: account })
     .then(function (list) {
-      l = list;
-      console.log(list);
+      const mytable = document.getElementById("hospitalList");
+      for (var i = 0; i < list[0].length; i++) {
+        let newRow = document.createElement("tr");
+        let cell;
+        for (var j = 0; j < 5; j++) {
+          cell = document.createElement("td");
+          cell.innerText = list[j][i];
+          newRow.appendChild(cell);
+        }
+        address = list[4][i];
+        cell = document.createElement("td");
+        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removeHospital(address);">Delete</i></a></td>`;
+        newRow.appendChild(cell);
+        mytable.appendChild(newRow);
+      }
     });
 }
 
 async function addHospital() {
-
-
-  var hospName = document.getElementById('hospName')
-  var hospEmail = document.getElementById('hospEmail')
-  var hospPhoneNumber = document.getElementById('hospPhoneNumber')
-  var hospETHAddress = document.getElementById('hospETHAddress')
-  var hospstreetAddress = document.getElementById('hospstreetAddress')
-  var hospcity = document.getElementById('hospcity')
-  var hospstate = document.getElementById('hospstate')
-  var hosppostalCode = document.getElementById('hosppostalCode')
-  var hospcountry = document.getElementById('hospcountry')
-
+  var hospName = document.getElementById("hospName").value;
+  var hospEmail = document.getElementById("hospEmail").value;
+  var hospPhoneNumber = document.getElementById("hospPhoneNumber").value;
+  var hospETHAddress = document.getElementById("hospETHAddress").value;
+  var hospstreetAddress = document.getElementById("hospstreetAddress").value;
+  var hospcity = document.getElementById("hospcity").value;
+  var hospstate = document.getElementById("hospstate").value;
+  var hosppostalCode = document.getElementById("hosppostalCode").value;
+  var hospcountry = document.getElementById("hospcountry").value;
 
   await contract.methods
-    .getHospitalList()
-    .call({ from: account })
-    .then(function (list) {
-      console.log(list);
+    .addHospital(
+      hospName,
+      hospEmail,
+      hospPhoneNumber,
+      hospstreetAddress +
+        ", " +
+        hospcity +
+        ", " +
+        hospstate +
+        ", " +
+        hosppostalCode +
+        ", " +
+        hospcountry,
+      hospETHAddress
+    )
+    .send({ from: account })
+    .then(function () {
+      alert("Hospital added successfully");
+      window.location.reload();
+    });
+}
+
+async function removeHospital(address) {
+  await contract.methods
+    .removeHospital(address)
+    .send({ from: account })
+    .then(function () {
+      alert("Hospital removed successfully");
+      window.location.reload();
     });
 }

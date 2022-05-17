@@ -15,12 +15,13 @@ contract Patient is User {
     MedicalRecord[] private patientMedRec;
 
     constructor(
-        Name memory patientName,
-        uint256 patientGender,
+        string memory patientName,
+        string memory patientGender,
         string memory patientEmail,
         uint256 patientAge,
-        PhoneNumber memory patientPhoneNumber,
-        Address memory patientAddress
+        string memory patientPhoneNumber,
+        string memory patientAddress,
+        address patientPrivAddress
     )
         User(
             patientName,
@@ -28,7 +29,8 @@ contract Patient is User {
             patientEmail,
             patientAge,
             patientPhoneNumber,
-            patientAddress
+            patientAddress,
+            patientPrivAddress
         )
     {}
 

@@ -4,17 +4,18 @@ import "./User.sol";
 import "./Patient.sol";
 
 contract Doctor is User {
-    string private title;
+    string public title;
     mapping(address => Patient) private patientList;
 
     constructor(
-        Name memory doctorName,
+        string memory doctorName,
         string memory doctorTitle,
-        uint256 doctorGender,
+        string memory doctorGender,
         string memory doctorEmail,
         uint256 doctorAge,
-        PhoneNumber memory doctorPhoneNumber,
-        Address memory doctorAddress
+        string memory doctorPhoneNumber,
+        string memory doctorAddress,
+        address doctorPrivAddress
     )
         User(
             doctorName,
@@ -22,19 +23,20 @@ contract Doctor is User {
             doctorEmail,
             doctorAge,
             doctorPhoneNumber,
-            doctorAddress
+            doctorAddress,
+            doctorPrivAddress
         )
     {
         title = doctorTitle;
     }
 
     function addPatient(
-        Name memory patientName,
-        uint256 patientGender,
+        string memory patientName,
+        string memory patientGender,
         string memory patientEmail,
         uint256 patientAge,
-        PhoneNumber memory patientPhoneNumber,
-        Address memory patientAddress,
+        string memory patientPhoneNumber,
+        string memory patientAddress,
         address privAddress
     ) public {
         Patient p = new Patient(
@@ -43,7 +45,8 @@ contract Doctor is User {
             patientEmail,
             patientAge,
             patientPhoneNumber,
-            patientAddress
+            patientAddress,
+            privAddress
         );
         patientList[privAddress] = p;
     }
