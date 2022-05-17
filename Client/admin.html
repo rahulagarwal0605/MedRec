@@ -198,7 +198,7 @@
     
     </section>
 
-<section data-bs-version="5.1" class="form6 cid-t5SHDIUXqS" id="form6-24">
+<!-- <section data-bs-version="5.1" class="form6 cid-t5SHDIUXqS" id="form6-24">
     
     
     <div class="container">
@@ -240,7 +240,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <section data-bs-version="5.1" class="content4 cid-t5SHIw6vyX" id="content4-25">
     
@@ -275,6 +275,7 @@
         <th>Hospital Name</th>
         <th>Hospital Email</th>
         <th>Hospital Contact No.</th>
+        <th>Hospital ETH Address</th>
         <th>Hospital Address</th>
         </tr>
         </thead>
@@ -284,6 +285,7 @@
         <td>Dr.Chand Clinic</td>
         <td>Clinic@lnmiit.ac.in</td>
         <td>11111111</td>
+        <td>ETH123</td>
         <td>Sac ke baju mein...</td>
         
         
@@ -296,6 +298,7 @@
             <td>Dr.Manish Clinic</td>
         <td>mp@lnmiit.ac.in</td>
         <td>11111112</td>
+        <td>ETH123</td>
         <td>BH2-A210</td>
        
         <td>
@@ -331,20 +334,45 @@
                     <div class="dragArea row">
 
                         <div class="col-md col-sm-12 form-group mb-3" data-for="hospName">
-                            <input type="text" name="hospName" placeholder="Hospital Name" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                            <input type="text" name="hospName" placeholder="Hospital Name" data-form-field="name" class="form-control" value="" id="hospName">
                         </div>
 
                         <div class="col-md col-sm-12 form-group mb-3" data-for="hospEmail">
-                            <input type="email" name="hospEmail" placeholder="Hospital Email" data-form-field="email" class="form-control" value="" id="email-form5-1f">
+                            <input type="email" name="hospEmail" placeholder="Hospital Email" data-form-field="email" class="form-control" value="" id="hospEmail">
                         </div>
 
                         <div class="col-12 form-group mb-3" data-for="hospPhoneNumber">
-                            <input type="tel" name="hospPhoneNumber" placeholder="Hospital Contact No." data-form-field="url" class="form-control" value="" id="url-form5-1f">
+                            <input type="tel" name="hospPhoneNumber" placeholder="Hospital Contact No." data-form-field="url" class="form-control" value="" id="hospPhoneNumber">
                         </div>
 
-                        <div class="col-12 form-group mb-3" data-for="textarea">
-                            <textarea name="hospAddress" placeholder="Hospital Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="hospETHAddress">
+                            <input type="text" name="hospETHAddress" placeholder="Hospital ETH Address" data-form-field="name" class="form-control" value="" id="hospETHAddress">
                         </div>
+
+                        
+
+                        <div class="col-12 form-group mb-3" data-for="hospstreetAddress">
+                            <textarea name="streetAddress" placeholder="Street Address" data-form-field="textarea" class="form-control" id="hospstreetAddress"></textarea>
+                        </div>      
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="hospcity">
+                            <input type="text" name="City" placeholder="City" data-form-field="name" class="form-control" value="" id="hospcity">
+                        </div>
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="hospstate">
+                            <input type="text" name="state" placeholder="State" data-form-field="name" class="form-control" value="" id="hospstate">
+                        </div>
+
+                        <div class="col-12 form-group mb-3" data-for="hosppostalCode">
+                            <input type="tel" name="postalCode" placeholder="Postal Code" data-form-field="url" class="form-control" value="" id="hosppostalCode">
+                        </div>
+
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="hospcountry">
+                            <input type="text" name="country" placeholder="Country" data-form-field="name" class="form-control" value="" id="hospcountry">
+                        </div>
+
+
+                        
 
                         <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button class="btn btn-primary display-4" onclick="addHospital()">Add Hospital</button></div>
                     </div>

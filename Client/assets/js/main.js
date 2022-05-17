@@ -510,6 +510,19 @@ async function getHospitalList() {
 }
 
 async function addHospital() {
+
+
+  var hospName = document.getElementById('hospName')
+  var hospEmail = document.getElementById('hospEmail')
+  var hospPhoneNumber = document.getElementById('hospPhoneNumber')
+  var hospETHAddress = document.getElementById('hospETHAddress')
+  var hospstreetAddress = document.getElementById('hospstreetAddress')
+  var hospcity = document.getElementById('hospcity')
+  var hospstate = document.getElementById('hospstate')
+  var hosppostalCode = document.getElementById('hosppostalCode')
+  var hospcountry = document.getElementById('hospcountry')
+
+
   await contract.methods
     .getHospitalList()
     .call({ from: account })
