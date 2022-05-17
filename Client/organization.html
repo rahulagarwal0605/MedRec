@@ -206,8 +206,7 @@
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>View Doctors</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">
-                    You can arrange Doctors</h4>
+                
                 
             </div>
         </div>
@@ -233,6 +232,7 @@
         <th>Doctor Gender</th>
         <th>Doctor Email</th>
         <th>Doctor Age</th>
+        <th>Doctor ETH Address</th>
         <th>Doctor Contact No.</th>
         <th>Doctor Address</th>
 
@@ -249,6 +249,7 @@
         <td>Male</td>
         <td>manp@gmail.com</td>
         <td>55</td>
+        <td>ETH123</td>
         <td>57575757</td>
         <td>Kahi bhi dolte rehte hai</td>
        
@@ -265,6 +266,7 @@
             <td>Male</td>
             <td>manp@gmail.com</td>
             <td>55</td>
+            <td>ETH123</td>
             <td>57575757</td>
             <td>Kahi bhi dolte rehte hai</td>
 
@@ -329,9 +331,32 @@
                         <input type="tel" name="doctorPhoneNumber" placeholder="Doctor Contact No." data-form-field="url" class="form-control" value="" id="url-form5-1f">
                     </div>
 
-                    <div class="col-12 form-group mb-3" data-for="doctorAddress">
-                        <textarea name="doctorAddress" placeholder="Doctor Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+
+                    <div class="col-12 form-group mb-3" data-for="doctorETHAddress">
+                        <input type="text" name="doctorETHAddress" placeholder="Doctor ETH Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
                     </div>
+
+
+                    <div class="col-12 form-group mb-3" data-for="doctorstreetAddress">
+                        <textarea name="doctorstreetAddress" placeholder="Street Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+                    </div>      
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="doctorcity">
+                        <input type="text" name="doctorCity" placeholder="City" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="doctorstate">
+                        <input type="text" name="doctorstate" placeholder="State" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
+                    <div class="col-12 form-group mb-3" data-for="doctorpostalCode">
+                        <input type="tel" name="doctorpostalCode" placeholder="Postal Code" data-form-field="url" class="form-control" value="" id="url-form5-1f">
+                    </div>
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="doctorcountry">
+                        <input type="text" name="doctorcountry" placeholder="Country" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
 
 
                     <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-4">Add Doctor</button></div>

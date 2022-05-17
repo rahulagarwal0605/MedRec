@@ -237,6 +237,7 @@
         <th>Patient Email</th>
         <th>Patient Age</th>
         <th>Patient Contact No.</th>
+        <th>Patient ETH Address</th>
         <th>Patient Address</th>
 
 
@@ -252,6 +253,7 @@
         <td>manp@gmail.com</td>
         <td>55</td>
         <td>57575757</td>
+        <td>ETH123</td>
         <td>Kahi bhi dolte rehte hai</td>
        
        
@@ -267,6 +269,7 @@
             <td>manp@gmail.com</td>
             <td>55</td>
             <td>57575757</td>
+            <td>ETH123</td>
             <td>Kahi bhi dolte rehte hai</td>
 
             <td>
@@ -334,9 +337,35 @@
                         <input type="tel" name="patientPhoneNumber" placeholder="Patient Contact No." data-form-field="url" class="form-control" value="" id="url-form5-1f">
                     </div>
 
-                    <div class="col-12 form-group mb-3" data-for="patientAddress">
-                        <textarea name="patientAddress" placeholder="Patient Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+                    <div class="col-12 form-group mb-3" data-for="patientETHAddress">
+                        <input type="text" name="patientETHAddress" placeholder="Patient ETH Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
                     </div>
+
+
+                    <div class="col-12 form-group mb-3" data-for="patientstreetAddress">
+                        <textarea name="patientstreetAddress" placeholder="Street Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+                    </div>      
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="patientcity">
+                        <input type="text" name="patientCity" placeholder="City" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="patientstate">
+                        <input type="text" name="patientstate" placeholder="State" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
+                    <div class="col-12 form-group mb-3" data-for="patientpostalCode">
+                        <input type="tel" name="patientpostalCode" placeholder="Postal Code" data-form-field="url" class="form-control" value="" id="url-form5-1f">
+                    </div>
+
+                    <div class="col-md col-sm-12 form-group mb-3" data-for="patientcountry">
+                        <input type="text" name="patientcountry" placeholder="Country" data-form-field="name" class="form-control" value="" id="name-form5-1f">
+                    </div>
+
+
+                    <!-- <div class="col-12 form-group mb-3" data-for="patientAddress">
+                        <textarea name="patient" placeholder="Patient Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+                    </div> -->
 
 
 
@@ -378,6 +407,7 @@
         <table class="table table-bordered">
         <thead>
         <tr>
+        <th>Patient ETH Address</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Days Excused</th>
@@ -389,6 +419,7 @@
         
         <tbody>
         <tr>
+            <td>ETH123</td>
         <td>11/05/2022</td>
         <td>14/05/2022</td>
         <td>4</td>
@@ -401,6 +432,7 @@
         </td>
         </tr>
         <tr>
+            <td>ETH123</td>
             <td>11/05/2022</td>
             <td>14/05/2022</td>
             <td>4</td>
@@ -443,6 +475,10 @@
 
 
                     <div class="dragArea row">
+
+                        <div class="col-12 form-group mb-3" data-for="patientETHAddress">
+                            <input type="text" name="patientETHAddress" placeholder="Patient ETH Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
+                        </div>
 
                         <div class="col-md col-sm-12 form-group mb-3" data-for="SDate">
                             <input type="text" name="SDate" placeholder="Start Date" data-form-field="name" class="form-control" value="" id="name-form5-1j">
