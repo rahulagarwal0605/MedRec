@@ -505,7 +505,7 @@ async function getHospitalList() {
         }
         address = list[4][i];
         cell = document.createElement("td");
-        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removeHospital(${address});">Delete</i></a></td>`;
+        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removeHospital('${address}');">Delete</i></a></td>`;
         newRow.appendChild(cell);
         mytable.appendChild(newRow);
       }
@@ -614,7 +614,7 @@ async function getDoctorList() {
         }
         address = list[7][i];
         cell = document.createElement("td");
-        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removeDoctor(${address});">Delete</i></a></td>`;
+        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removeDoctor('${address}');">Delete</i></a></td>`;
         newRow.appendChild(cell);
         mytable.appendChild(newRow);
       }
@@ -687,10 +687,10 @@ async function getPatientList() {
         }
         address = list[6][i];
         cell = document.createElement("td");
-        cell.innerHTML = `<td><a class="info" title="View Records" data-toggle="tooltip" onClick="javascript:getPatMedRecord(${address});">View Records</i></a></td>`;
+        cell.innerHTML = `<td><a class="info" title="View Records" data-toggle="tooltip" onClick="javascript:getPatMedRecord('${address}');">View Records</i></a></td>`;
         newRow.appendChild(cell);
         cell = document.createElement("td");
-        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removePatient(${address});">Delete</i></a></td>`;
+        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removePatient('${address}');">Delete</i></a></td>`;
         newRow.appendChild(cell);
         mytable.appendChild(newRow);
       }
