@@ -236,31 +236,8 @@
         </tr>
         </thead>
         
-        <tbody>
-        <tr>
-        <td>11/05/2022</td>
-        <td>14/05/2022</td>
-        <td>4</td>
-        <td>Fever</td>
-        <td>2 Din Se</td>
-        <td>Paracetamol</td>
-        <td>
+        <tbody id="medRecords">
         
-        <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-        </td>
-        </tr>
-        <tr>
-            <td>11/05/2022</td>
-            <td>14/05/2022</td>
-            <td>4</td>
-            <td>Fever</td>
-            <td>2 Din Se</td>
-            <td>Paracetamol</td>
-            <td>
-            
-            <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-            </td>
-            </tr>
         </tbody>
         </table>
         </div>
@@ -316,19 +293,7 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="GK4hpm8CPr+VQjW+viXkWJCESIKa1l+QPzhZV4hj6Dbxh85tKtHyWG9Bxkrowl1a8DfLNkCBIPCvrJtbgrknHzfd4SoLpllr4/uAOEAZzrBgzBAGiv+SB+B4pvoEha1b">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Added Successfully!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                            Oops...! some problem!
-                        </div>
-                    </div>
                     <div class="dragArea row">
-                        
-                        <div class="col-12 form-group mb-3" data-for="patientETHAddress">
-                            <input type="text" name="patientETHAddress" placeholder="Patient ETH Address" data-form-field="textarea" class="form-control" id="patientETHAddress"></textarea>
-                        </div>
-
                         <div class="col-md col-sm-12 form-group mb-3" data-for="SDate">
                             <input type="text" name="SDate" placeholder="Start Date" data-form-field="name" class="form-control" value="" id="SDate">
                         </div>
@@ -356,7 +321,6 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-4" onclick="addMedicalRecord()"  >Add Record</button></div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -397,8 +361,10 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script type="text/javascript" src="assets/js/login.js"></script>
-
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = getMedRecordList();
+    </script>
 
 
   

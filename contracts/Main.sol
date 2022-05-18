@@ -180,6 +180,27 @@ contract Main {
             );
     }
 
+    function getPatientList()
+        public
+        view
+        onlyDoc(msg.sender)
+        returns (
+            string[] memory,
+            string[] memory,
+            string[] memory,
+            uint256[] memory,
+            string[] memory,
+            string[] memory,
+            address[] memory
+        )
+    {
+        return
+            a
+                .getHospital(docOrg[msg.sender])
+                .getDoctor(msg.sender)
+                .getPatientList();
+    }
+
     function addMedRec(Patient.MedicalRecord memory medRec)
         public
         onlyPat(msg.sender)

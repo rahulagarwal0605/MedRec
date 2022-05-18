@@ -1,6 +1,11 @@
 var web3 = new Web3(window.ethereum);
-var contractAddress = "0xd2066cA1518F8c9Da3D841994cFf046D717386F9";
+var contractAddress = "0xC00fBE3D17Be703A88449532CAB96568c58EA738";
 var abi = [
+  {
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
   {
     inputs: [
       {
@@ -171,63 +176,6 @@ var abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "privAddress",
-        type: "address",
-      },
-    ],
-    name: "removeDoctor",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "privAddress",
-        type: "address",
-      },
-    ],
-    name: "removeHospital",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "index",
-        type: "uint256",
-      },
-    ],
-    name: "removeMedRec",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "privAddress",
-        type: "address",
-      },
-    ],
-    name: "removePatient",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
     inputs: [],
     name: "getDoctorList",
     outputs: [
@@ -309,6 +257,49 @@ var abi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "getPatientList",
+    outputs: [
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "string[]",
+        name: "",
+        type: "string[]",
+      },
+      {
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "address",
@@ -325,6 +316,58 @@ var abi = [
       },
     ],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "privAddress",
+        type: "address",
+      },
+    ],
+    name: "removeDoctor",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "privAddress",
+        type: "address",
+      },
+    ],
+    name: "removeHospital",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "index",
+        type: "uint256",
+      },
+    ],
+    name: "removeMedRec",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "privAddress",
+        type: "address",
+      },
+    ],
+    name: "removePatient",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -509,6 +552,239 @@ async function removeHospital(address) {
     .send({ from: account })
     .then(function () {
       alert("Hospital removed successfully");
+      window.location.reload();
+    });
+}
+
+async function addDoctor() {
+  var doctorName = document.getElementById("doctorName").value;
+  var doctorTitle = document.getElementById("doctorTitle").value;
+  var doctorGender = document.getElementById("doctorGender").value;
+  var doctorEmail = document.getElementById("doctorEmail").value;
+  var doctorAge = document.getElementById("doctorAge").value;
+  var doctorPhoneNumber = document.getElementById("doctorPhoneNumber").value;
+  var doctorETHAddress = document.getElementById("doctorETHAddress").value;
+  var doctorstreetAddress = document.getElementById(
+    "doctorstreetAddress"
+  ).value;
+  var doctorcity = document.getElementById("doctorcity").value;
+  var doctorstate = document.getElementById("doctorstate").value;
+  var doctorpostalCode = document.getElementById("doctorpostalCode").value;
+  var doctorcountry = document.getElementById("doctorcountry").value;
+
+  await contract.methods
+    .addDoctor(
+      doctorName,
+      doctorTitle,
+      doctorGender,
+      doctorEmail,
+      doctorAge,
+      doctorPhoneNumber,
+      doctorstreetAddress +
+        ", " +
+        doctorcity +
+        ", " +
+        doctorstate +
+        ", " +
+        doctorpostalCode +
+        ", " +
+        doctorcountry,
+      doctorETHAddress
+    )
+    .send({ from: account })
+    .then(function () {
+      alert("Doctor added successfully");
+      window.location.reload();
+    });
+}
+
+async function getDoctorList() {
+  await contract.methods
+    .getDoctorList()
+    .call({ from: account })
+    .then(function (list) {
+      const mytable = document.getElementById("doctorList");
+      for (var i = 0; i < list[0].length; i++) {
+        let newRow = document.createElement("tr");
+        let cell;
+        for (var j = 0; j < 8; j++) {
+          cell = document.createElement("td");
+          cell.innerText = list[j][i];
+          newRow.appendChild(cell);
+        }
+        address = list[7][i];
+        cell = document.createElement("td");
+        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removeDoctor(address);">Delete</i></a></td>`;
+        newRow.appendChild(cell);
+        mytable.appendChild(newRow);
+      }
+    });
+}
+
+async function removeDoctor(address) {
+  await contract.methods
+    .removeDoctor(address)
+    .send({ from: account })
+    .then(function () {
+      alert("Doctor removed successfully");
+      window.location.reload();
+    });
+}
+
+async function addPatient() {
+  var patientName = document.getElementById("patientName").value;
+  var patientGender = document.getElementById("patientGender").value;
+  var patientEmail = document.getElementById("patientEmail").value;
+  var patientAge = document.getElementById("patientAge").value;
+  var patientPhoneNumber = document.getElementById("patientPhoneNumber").value;
+  var patientETHAddress = document.getElementById("patientETHAddress").value;
+  var patientstreetAddress = document.getElementById(
+    "patientstreetAddress"
+  ).value;
+  var patientcity = document.getElementById("patientcity").value;
+  var patientstate = document.getElementById("patientstate").value;
+  var patientpostalCode = document.getElementById("patientpostalCode").value;
+  var patientcountry = document.getElementById("patientcountry").value;
+
+  await contract.methods
+    .addPatient(
+      patientName,
+      patientGender,
+      patientEmail,
+      patientAge,
+      patientPhoneNumber,
+      patientstreetAddress +
+        ", " +
+        patientcity +
+        ", " +
+        patientstate +
+        ", " +
+        patientpostalCode +
+        ", " +
+        patientcountry,
+      patientETHAddress
+    )
+    .send({ from: account })
+    .then(function () {
+      alert("Patient added successfully");
+      window.location.reload();
+    });
+}
+
+async function getPatientList() {
+  await contract.methods
+    .getPatientList()
+    .call({ from: account })
+    .then(function (list) {
+      const mytable = document.getElementById("patientList");
+      for (var i = 0; i < list[0].length; i++) {
+        let newRow = document.createElement("tr");
+        let cell;
+        for (var j = 0; j < 7; j++) {
+          cell = document.createElement("td");
+          cell.innerText = list[j][i];
+          newRow.appendChild(cell);
+        }
+        address = list[6][i];
+        cell = document.createElement("td");
+        cell.innerHTML = `<td><a class="info" title="View Records" data-toggle="tooltip" onClick="javascript:getPatMedRecord(address);">View Records</i></a></td>`;
+        newRow.appendChild(cell);
+        cell = document.createElement("td");
+        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removePatient(address);">Delete</i></a></td>`;
+        newRow.appendChild(cell);
+        mytable.appendChild(newRow);
+      }
+    });
+}
+
+async function removePatient(address) {
+  await contract.methods
+    .removePatient(address)
+    .send({ from: account })
+    .then(function () {
+      alert("Patient removed successfully");
+      window.location.reload();
+    });
+}
+
+async function getPatMedRecord(address) {
+  await contract.methods
+    .viewMedRec(address)
+    .call({ from: account })
+    .then(function (list) {
+      const elmntToView = document.getElementById("content4-20");
+      elmntToView.scrollIntoView({ behavior: "smooth" });
+      const mytable = document.getElementById("medRecordList");
+      for (var i = 0; i < list[0].length; i++) {
+        let newRow = document.createElement("tr");
+        let cell;
+        for (var j = 0; j < 6; j++) {
+          cell = document.createElement("td");
+          cell.innerText = list[j][i];
+          newRow.appendChild(cell);
+        }
+        newRow.appendChild(cell);
+        mytable.appendChild(newRow);
+      }
+    });
+}
+
+async function addMedicalRecord() {
+  var SDate = document.getElementById("SDate").value;
+  var EDate = document.getElementById("EDate").value;
+  var DaysExcused = document.getElementById("DaysExcused").value;
+  var Diagnosis = document.getElementById("Diagnosis").value;
+  var DiagnosisDescription = document.getElementById(
+    "DiagnosisDescription"
+  ).value;
+  var Prescription = document.getElementById("Prescription").value;
+
+  await contract.methods
+    .addMedRec([
+      SDate,
+      EDate,
+      DaysExcused,
+      Diagnosis,
+      DiagnosisDescription,
+      Prescription,
+    ])
+    .send({ from: account })
+    .then(function () {
+      alert("Medical Record added successfully");
+      window.location.reload();
+    });
+}
+
+var index;
+async function getMedRecordList() {
+  await contract.methods
+    .viewMedRec()
+    .call({ from: account })
+    .then(function (list) {
+      const mytable = document.getElementById("medRecords");
+      for (var i = 0; i < list[0].length; i++) {
+        let newRow = document.createElement("tr");
+        let cell;
+        for (var j = 0; j < 6; j++) {
+          cell = document.createElement("td");
+          cell.innerText = list[j][i];
+          newRow.appendChild(cell);
+        }
+        index = i;
+        cell = document.createElement("td");
+        cell.innerHTML = `<td><a class="delete" title="Delete" data-toggle="tooltip" onClick="javascript:removeMedRec(index);">Delete</i></a></td>`;
+        newRow.appendChild(cell);
+        mytable.appendChild(newRow);
+      }
+    });
+}
+
+async function removeMedRec(index) {
+  await contract.methods
+    .removeMedRec(index)
+    .send({ from: account })
+    .then(function () {
+      alert("Medical Record removed successfully");
       window.location.reload();
     });
 }

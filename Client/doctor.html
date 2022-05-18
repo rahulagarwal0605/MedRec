@@ -191,9 +191,7 @@
                     
                     <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="doctor.html#form5-1y">Add New Patient</a></li></ul>
                     
-                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="doctor.html#content4-20">View Record</a></li></ul>
-                    
-                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="doctor.html#form5-1x">Add Record</a></li></ul>
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black display-4" href="doctor.html#content4-20">View Records</a></li></ul>
                     
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-secondary display-4" href="">Logout</a></div>
                 </div>
@@ -237,46 +235,15 @@
         <th>Patient Email</th>
         <th>Patient Age</th>
         <th>Patient Contact No.</th>
-        <th>Patient ETH Address</th>
         <th>Patient Address</th>
-
+        <th>Patient ETH Address</th>
+        <th></th>
 
         </tr>
         </thead>
         
-        <tbody>
-        <tr>
-
-
-        <td>ManishJi</td>
-        <td>Male</td>
-        <td>manp@gmail.com</td>
-        <td>55</td>
-        <td>57575757</td>
-        <td>ETH123</td>
-        <td>Kahi bhi dolte rehte hai</td>
-       
-       
-        <td>
+        <tbody id="patientList">
         
-        <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-        </td>
-        </tr>
-        <tr>
-
-            <td>ManishJi 2.0</td>
-            <td>Male</td>
-            <td>manp@gmail.com</td>
-            <td>55</td>
-            <td>57575757</td>
-            <td>ETH123</td>
-            <td>Kahi bhi dolte rehte hai</td>
-
-            <td>
-            
-            <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-            </td>
-            </tr>
         </tbody>
         </table>
         </div>
@@ -306,15 +273,6 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="xtM26wAAYpJ4Ff+NzTaRJpYe6SLXC4ShDqFoMAwddYjWsiMPdTSVRasLzc8QfL4TyWbRpU5ewdu4wD4S0lFfa/qMWof1cZItferwaZmB45x2TahYjTrhCwEEjB+EDg8V">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Added Successfully!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                            Oops...! some problem!
-                        </div>
-                    </div>
-                    
-
                     <div class="col-md col-sm-12 form-group mb-3" data-for="patientName">
                         <input type="text" name="patientName" placeholder="Patient Name" data-form-field="name" class="form-control" value="" id="patientName">
                     </div>
@@ -335,10 +293,6 @@
 
                     <div class="col-12 form-group mb-3" data-for="patientPhoneNumber">
                         <input type="tel" name="patientPhoneNumber" placeholder="Patient Contact No." data-form-field="url" class="form-control" value="" id="patientPhoneNumber">
-                    </div>
-
-                    <div class="col-12 form-group mb-3" data-for="patientETHAddress">
-                        <input type="text" name="patientETHAddress" placeholder="Patient ETH Address" data-form-field="textarea" class="form-control" id="patientETHAddress"></textarea>
                     </div>
 
 
@@ -367,14 +321,12 @@
                         <textarea name="patient" placeholder="Patient Address" data-form-field="textarea" class="form-control" id="textarea-form5-1f"></textarea>
                     </div> -->
 
-
-
-
-
+                    <div class="col-12 form-group mb-3" data-for="patientETHAddress">
+                        <input type="text" name="patientETHAddress" placeholder="Patient ETH Address" data-form-field="textarea" class="form-control" id="patientETHAddress"></textarea>
+                    </div>
 
                         <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-4"  onclick="addPatient()">Add Patient</button></div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -388,7 +340,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Past Medical Records</strong></h3>
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Patient Medical Records</strong></h3>
                 
                 
             </div>
@@ -407,7 +359,6 @@
         <table class="table table-bordered">
         <thead>
         <tr>
-        <th>Patient ETH Address</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Days Excused</th>
@@ -417,33 +368,8 @@
         </tr>
         </thead>
         
-        <tbody>
-        <tr>
-            <td>ETH123</td>
-        <td>11/05/2022</td>
-        <td>14/05/2022</td>
-        <td>4</td>
-        <td>Fever</td>
-        <td>2 Din Se</td>
-        <td>Paracetamol</td>
-        <td>
+        <tbody id="medRecordList">
         
-        <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-        </td>
-        </tr>
-        <tr>
-            <td>ETH123</td>
-            <td>11/05/2022</td>
-            <td>14/05/2022</td>
-            <td>4</td>
-            <td>Fever</td>
-            <td>2 Din Se</td>
-            <td>Paracetamol</td>
-            <td>
-            
-            <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-            </td>
-            </tr>
         </tbody>
         </table>
         </div>
@@ -455,7 +381,7 @@
 
 </section>
 
-<section data-bs-version="5.1" class="form5 cid-t5SFvmftwX" id="form5-1x">
+<!-- <section data-bs-version="5.1" class="form5 cid-t5SFvmftwX" id="form5-1x">
     
     
     <div class="container">
@@ -510,7 +436,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <section data-bs-version="5.1" class="footer3 cid-t5SFm134wq" once="footers" id="footer3-1w">
@@ -540,7 +466,10 @@
     </div>
   
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script type="text/javascript" src="assets/js/login.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = getPatientList();
+    </script>
   
 </body>
 </html>

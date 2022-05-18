@@ -232,49 +232,15 @@
         <th>Doctor Gender</th>
         <th>Doctor Email</th>
         <th>Doctor Age</th>
-        <th>Doctor ETH Address</th>
         <th>Doctor Contact No.</th>
         <th>Doctor Address</th>
-
+        <th>Doctor ETH Address</th>
 
         </tr>
         </thead>
         
-        <tbody>
-        <tr>
-
-
-        <td>ManishJi</td>
-        <td>Okay Doctor</td>
-        <td>Male</td>
-        <td>manp@gmail.com</td>
-        <td>55</td>
-        <td>ETH123</td>
-        <td>57575757</td>
-        <td>Kahi bhi dolte rehte hai</td>
-       
-       
-        <td>
+        <tbody id="doctorList">
         
-        <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-        </td>
-        </tr>
-        <tr>
-
-            <td>ManishJi 2.0</td>
-            <td>Top Doctor</td>
-            <td>Male</td>
-            <td>manp@gmail.com</td>
-            <td>55</td>
-            <td>ETH123</td>
-            <td>57575757</td>
-            <td>Kahi bhi dolte rehte hai</td>
-
-            <td>
-            
-            <a class="delete" title="Delete" data-toggle="tooltip">Delete</i></a>
-            </td>
-            </tr>
         </tbody>
         </table>
         </div>
@@ -297,14 +263,6 @@
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-                <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="r2llZUmKDID88wnT62Emnax8nesGOwUCHCiL9SmFoUxpIKhxebhLooailmdBf7fR7MMeuE+Zk4ZchHTNFJlILmkweG38YPgqSiWzRbLW+HrD5YXb1BjliaSqEQA9cF9n">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Added Successfully!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                            Oops...! some problem!
-                        </div>
-                    </div>
-
                     <div class="col-md col-sm-12 form-group mb-3" data-for="doctorName">
                         <input type="text" name="doctorName" placeholder="Doctor Name" data-form-field="name" class="form-control" value="" id="doctorName">
                     </div>
@@ -332,11 +290,6 @@
                     </div>
 
 
-                    <div class="col-12 form-group mb-3" data-for="doctorETHAddress">
-                        <input type="text" name="doctorETHAddress" placeholder="Doctor ETH Address" data-form-field="textarea" class="form-control" id="doctorETHAddress"></textarea>
-                    </div>
-
-
                     <div class="col-12 form-group mb-3" data-for="doctorstreetAddress">
                         <textarea name="doctorstreetAddress" placeholder="Street Address" data-form-field="textarea" class="form-control" id="doctorstreetAddress"></textarea>
                     </div>      
@@ -357,10 +310,11 @@
                         <input type="text" name="doctorcountry" placeholder="Country" data-form-field="name" class="form-control" value="" id="doctorcountry">
                     </div>
 
-
+                    <div class="col-12 form-group mb-3" data-for="doctorETHAddress">
+                        <input type="text" name="doctorETHAddress" placeholder="Doctor ETH Address" data-form-field="textarea" class="form-control" id="doctorETHAddress"></textarea>
+                    </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-4"  onclick="addDoctor()" >Add Doctor</button></div>
-                </form>
             </div>
         </div>
     </div>
@@ -396,9 +350,10 @@
  
 
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script type="text/javascript" src="assets/js/login.js"></script>
-
-
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = getDoctorList();
+    </script>
 
   
 </body>
